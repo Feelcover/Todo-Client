@@ -1,12 +1,14 @@
-import React from 'react'
+import React from "react";
+import styles from "./Header.module.css";
 
 const Header = () => {
   return (
-    <header>
-        <div className='container'></div>
+    <header className={styles.header}>
+      <div className="container pt-3 pb-3">
         <h1>Todo App</h1>
+      </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
