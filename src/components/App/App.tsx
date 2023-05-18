@@ -5,7 +5,11 @@ function App() {
   return (
     <>
       <Header/>
-      <Form/>
+      <main>
+        <section className="container">
+        <Form/>
+        </section>
+      </main>
     </>
   );
 }

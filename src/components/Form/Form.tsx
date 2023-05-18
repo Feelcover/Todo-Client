@@ -3,12 +3,12 @@ import styles from "./Form.module.css"
 
 const Form = () => {
   return (
-    <form className='mb-3'>
-        <div className='form-group mb-3'>
+    <form className={styles.form}>
+        <div className={styles.container}>
             <label className='form-label' htmlFor="">Введите название задачи</label>
             <input type="text" className='form-control' />
         </div>
-        <button className='btn btn-success'>Создать</button>
+        <button className={`${styles.button} btn btn-success`}>Создать</button>
     </form>
   )
 }
