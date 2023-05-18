@@ -3,13 +3,13 @@ import styles from "./Item.module.css";
 
 const Item = () => {
   return (
-    <li>
+    <li className={styles.item}>
       <div>
-        <span></span>
+        <span className={styles.task}>Задача</span>
       </div>
       <div>
-        <button className="btn btn-primary">Изменить</button>
-        <button className="btn btn-success">Завершить</button>
+        <button className="btn btn-primary mr-2">Изменить</button>
+        <button className="btn btn-success mr-2">Завершить</button>
         <button className="btn btn-danger">Удалить</button>
       </div>
     </li>

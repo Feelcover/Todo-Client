@@ -1,0 +1,9 @@
+.item{
+    margin-top: 20px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+}
+.task {
+    font-size: 26px;
+}
