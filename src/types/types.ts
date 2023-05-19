@@ -20,3 +20,5 @@ export interface ICreateTodoAction {
   type: TodoActionTypes.CREATE_TODO;
   payload: string;
 }
+
+export type ITodoAction = ICreateTodoAction
