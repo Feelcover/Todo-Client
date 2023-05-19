@@ -16,6 +16,10 @@ export interface ITodoState {
   todos: ITodo[];
 }
 
+
+export interface ITodoReducer {
+  todoReducer: ITodoState;
+}
 export interface ICreateTodoAction {
   type: TodoActionTypes.CREATE_TODO;
   payload: string;
