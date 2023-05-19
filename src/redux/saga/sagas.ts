@@ -9,10 +9,9 @@ function* sagaCreateTodo(action:ICreateTodoAction): Generator<Effect, void> {
             title: action.payload,
             done: false,
         }
-        
         const todo = yield call(TodoApi.createTodo, todoObj);
 
-        yield put({type:TodoActionTypes.CREATE_TODO, payload: todo})
+        yield put({type:TodoActionTypes.CREATE_TODO_SUCCESS, payload: todo})
     } catch (err) {
         console.log(err);
     }

@@ -12,7 +12,6 @@ const Form = () => {
     if (!title.trim()) {
       return;
     }
-
     dispatch(createTodo(title));
     setTitle("");
   };

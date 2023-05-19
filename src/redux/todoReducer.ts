@@ -9,7 +9,7 @@ export const todoReducer = (
   action: ITodoAction
 ) => {
     switch (action.type) {
-        case TodoActionTypes.CREATE_TODO:
+        case TodoActionTypes.CREATE_TODO_SUCCESS:
             return {todos:[...state.todos, action.payload]}    
         default:
             return state;
