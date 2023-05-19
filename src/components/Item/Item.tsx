@@ -2,6 +2,8 @@ import { IItemProps } from "../../types/types";
 import styles from "./Item.module.css";
 
 const Item = ({todo}:IItemProps) => {
+  console.log(todo);
+  
   return (
     <li className={styles.item}>
       <div>

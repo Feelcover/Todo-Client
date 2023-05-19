@@ -1,7 +1,7 @@
 import { ITodoAction, ITodoState, TodoActionTypes } from "../types/types";
 
 export const initialState = {
-  todos: [],
+  todos: []
 };
 
 export const todoReducer = (
@@ -10,7 +10,7 @@ export const todoReducer = (
 ) => {
     switch (action.type) {
         case TodoActionTypes.CREATE_TODO:
-            return {todo:[...state.todos, action.payload]}    
+            return {todos:[...state.todos, action.payload]}    
         default:
             return state;
     }

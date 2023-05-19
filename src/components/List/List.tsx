@@ -6,11 +6,12 @@ import styles from "./List.module.css";
 
 const List = () => {
   const state = useSelector((state: ITodoReducer) => state.todoReducer);
+
   return (
     <TransitionGroup component="ul" className="list-group">
-      {state.todos.map(todo=>(
-        <CSSTransition timeout={800} classNames={'post'} key={todo.id}>
-          <Item todo={todo}/>
+      {state.todos.map((todo) => (
+        <CSSTransition timeout={800} classNames={"post"} key={todo.id}>
+          <Item todo={todo} />
         </CSSTransition>
       ))}
     </TransitionGroup>
