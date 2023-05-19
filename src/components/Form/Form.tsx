@@ -4,20 +4,26 @@ import { createTodo } from "../../redux/actions";
 import styles from "./Form.module.css";
 
 const Form = () => {
-  const [input, setInput] = useState("");
+  const [title, setTitle] = useState("");
   const dispatch = useDispatch();
 
   const handleSubmit = (evt: FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    if (!input.trim()) {
+    if (!title.trim()) {
       return;
     }
-    dispatch(createTodo(input));
-    setInput("");
+    const todoObject = {
+      title,
+      done: false,
+    }
+
+    //@ts-ignore
+    dispatch(createTodo(todoObject));
+    setTitle("");
   };
 
   const handleChangeInput = (evt: ChangeEvent<HTMLInputElement>) => {
-    setInput(evt.target.value);
+    setTitle(evt.target.value);
   };
 
   return (
@@ -27,7 +33,7 @@ const Form = () => {
           Введите название задачи
         </label>
         <input
-          value={input}
+          value={title}
           type="text"
           className="form-control"
           onChange={handleChangeInput}
