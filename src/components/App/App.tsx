@@ -1,7 +1,6 @@
 import Form from "../Form/Form";
 import Header from "../Header/Header";
-import Items from "../Items/Items";
-
+import List from "../List/List";
 function App() {
   return (
     <>
@@ -11,7 +10,8 @@ function App() {
         <Form/>
         </section>
         <section className="container">
-        <Items/>
+          <h1 className="pt-3">Новые задачи</h1>
+        <List/>
         </section>
       </main>
     </>

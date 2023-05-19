@@ -26,3 +26,7 @@ export interface ICreateTodoAction {
 }
 
 export type ITodoAction = ICreateTodoAction
+
+export interface IItemProps {
+  todo:ITodo;
+}
