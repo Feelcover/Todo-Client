@@ -40,6 +40,7 @@ export interface IDeleteTodoAction {
 export type ITodoAction =
   | ICreateTodoAction
   | IDeleteTodoAction
+  | IGetTodosAction
 export interface IItemProps {
   todo: ITodo;
   removeTodo: (arg0: string) => void;
