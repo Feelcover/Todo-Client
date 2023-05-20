@@ -6,3 +6,10 @@ export const createTodo = (payload: string) => {
         payload
     }
 }
+
+export const deleteTodo = (payload: string) => {
+    return {
+        type:TodoActionTypes.DELETE_TODO,
+        payload
+    }
+}
