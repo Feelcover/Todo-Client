@@ -7,7 +7,6 @@ export enum TodoActionTypes {
   CHANGE_TODO = "CHANGE_TODO",
   DELETE_TODO = "DELETE_TODO",
   DELETE_TODO_SUCCESS = "DELETE_TODO_SUCCESS",
-
 }
 
 export interface ITodo {
@@ -20,9 +19,13 @@ export interface ITodoState {
   todos: ITodo[];
 }
 
-
 export interface ITodoReducer {
   todoReducer: ITodoState;
+}
+
+export interface IGetTodoSAction {
+  type: TodoActionTypes.GET_TODOS_SUCCESS;
+  payload: ITodoState[];
 }
 export interface ICreateTodoAction {
   type: TodoActionTypes.CREATE_TODO_SUCCESS;
@@ -34,7 +37,10 @@ export interface IDeleteTodoAction {
   payload: string;
 }
 
-export type ITodoAction = ICreateTodoAction | IDeleteTodoAction
+export type ITodoAction =
+  | ICreateTodoAction
+  | IDeleteTodoAction
+  | IGetTodoSAction;
 
 export interface IItemProps {
   todo: ITodo;
