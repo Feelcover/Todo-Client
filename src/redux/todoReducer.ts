@@ -17,7 +17,7 @@ export const todoReducer = (
         todos: state.todos.filter((todo) => todo.id !== action.payload),
       };
     case TodoActionTypes.GET_TODOS_SUCCESS:
-      return {...state, todos: action.payload };
+      return { ...state, todos: action.payload };
 
     default:
       return state;

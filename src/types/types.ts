@@ -23,25 +23,23 @@ export interface ITodoReducer {
   todoReducer: ITodoState;
 }
 
-export interface IGetTodoSAction {
-  type: TodoActionTypes.GET_TODOS_SUCCESS;
-  payload: ITodoState[];
+export interface IGetTodosAction {
+  type: TodoActionTypes.GET_TODOS_SUCCESS | TodoActionTypes.GET_TODOS;
+  payload?: ITodoState;
 }
 export interface ICreateTodoAction {
-  type: TodoActionTypes.CREATE_TODO_SUCCESS;
+  type: TodoActionTypes.CREATE_TODO_SUCCESS | TodoActionTypes.CREATE_TODO;
   payload: string;
 }
 
 export interface IDeleteTodoAction {
-  type: TodoActionTypes.DELETE_TODO_SUCCESS;
+  type: TodoActionTypes.DELETE_TODO_SUCCESS | TodoActionTypes.DELETE_TODO;
   payload: string;
 }
 
 export type ITodoAction =
   | ICreateTodoAction
   | IDeleteTodoAction
-  | IGetTodoSAction;
-
 export interface IItemProps {
   todo: ITodo;
   removeTodo: (arg0: string) => void;
