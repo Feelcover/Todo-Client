@@ -9,16 +9,16 @@ const List = () => {
   const state = useSelector((state: ITodoReducer) => state.todoReducer);
   const dispatch = useDispatch();
 
-  const removeTodo = (id:string) => {
-    dispatch(deleteTodo(id))
-  }
+  const removeTodo = (id: string) => {
+    dispatch(deleteTodo(id));
+  };
   console.log(state.todos);
 
   return (
     <TransitionGroup component="ul" className="list-group">
       {state.todos.map((todo) => (
         <CSSTransition timeout={800} classNames={"todo"} key={todo.id}>
-          <Item todo={todo} removeTodo={removeTodo}/>
+          <Item todo={todo} removeTodo={removeTodo} />
         </CSSTransition>
       ))}
     </TransitionGroup>
