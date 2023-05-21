@@ -11,7 +11,7 @@ function* sagaGetTodos(): Generator<Effect, void, ITodo[]> {
   try {
     const todos = yield call(TodoApi.getTodos);
 
-    yield put({ type: TodoActionTypes.GET_TODOS_SUCCESS, payload:todos});
+    yield put({ type: TodoActionTypes.GET_TODOS_SUCCESS, payload: todos });
   } catch (err) {
     console.log(err);
   }
