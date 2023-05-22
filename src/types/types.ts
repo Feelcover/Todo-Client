@@ -33,9 +33,9 @@ export interface ICreateTodoAction {
   payload: string;
 }
 
-export interface ICompleteTodoAction {
+export interface ICompleteTodoAction<T> {
   type: TodoActionTypes.COMPLETE_TODO_SUCCESS | TodoActionTypes.COMPLETE_TODO;
-  payload: ITodoState | string;
+  payload: T;
 }
 
 export interface IDeleteTodoAction {
@@ -47,7 +47,7 @@ export type ITodoAction =
   | ICreateTodoAction
   | IDeleteTodoAction
   | IGetTodosAction
-  | ICompleteTodoAction
+  | ICompleteTodoAction<ITodo | string>;
 export interface IItemProps {
   todo: ITodo;
   removeTodo: (arg0: string) => void;

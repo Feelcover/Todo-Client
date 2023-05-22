@@ -1,4 +1,5 @@
 import {
+  ICompleteTodoAction,
   ICreateTodoAction,
   IDeleteTodoAction,
   ITodo,
@@ -44,8 +45,28 @@ function* sagaDeleteTodo(action: IDeleteTodoAction): Generator<Effect, void> {
   }
 }
 
+function* sagaCompleteTodo(
+  action: ICompleteTodoAction<ITodo>
+): Generator<Effect, void> {
+  try {
+    const todoObj = {
+      done: action.payload.done,
+      id: action.payload.id,
+    };
+    yield call(TodoApi.completeTodo, todoObj);
+
+    yield put({
+      type: TodoActionTypes.COMPLETE_TODO_SUCCESS,
+      payload: action.payload.id,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 export function* sagaWatcher(): Generator<Effect, void> {
   yield takeEvery(TodoActionTypes.GET_TODOS, sagaGetTodos);
   yield takeEvery(TodoActionTypes.CREATE_TODO, sagaCreateTodo);
+  yield takeEvery(TodoActionTypes.COMPLETE_TODO, sagaCompleteTodo);
   yield takeEvery(TodoActionTypes.DELETE_TODO, sagaDeleteTodo);
 }
