@@ -40,3 +40,16 @@ export const completeTodo = (id: string, done: boolean) => {
         }
     }
 }
+
+export const showAlert = (text: string, status: string) => {
+    return {
+        type:TodoActionTypes.SHOW_ALERT,
+        payload: text, status
+    }
+}
+
+export const hideAlert = () => {
+    return {
+        type:TodoActionTypes.HIDE_ALERT,
+    }
+}

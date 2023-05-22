@@ -28,6 +28,10 @@ export interface IHideAlertAction {
   type: TodoActionTypes.HIDE_ALERT;
 }
 
+export interface IAlertProps {
+  props: IAlertState;
+}
+
 export interface ITodo {
   id: string;
   title: string;

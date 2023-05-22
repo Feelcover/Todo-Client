@@ -1,0 +1,8 @@
+.alertWrapper{
+    position: relative;
+}
+.alertBtn{
+    position: absolute;
+    top:5px;
+    right: 5px;
+}
