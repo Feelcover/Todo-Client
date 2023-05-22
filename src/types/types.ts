@@ -34,8 +34,8 @@ export interface ICreateTodoAction {
 }
 
 export interface ICompleteTodoAction {
-  type: TodoActionTypes.COMPLETE_TODO_SUCCESS| TodoActionTypes.COMPLETE_TODO;
-  payload: ITodoState;
+  type: TodoActionTypes.COMPLETE_TODO_SUCCESS | TodoActionTypes.COMPLETE_TODO;
+  payload: ITodoState | string;
 }
 
 export interface IDeleteTodoAction {
