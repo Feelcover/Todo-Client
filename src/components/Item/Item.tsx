@@ -12,6 +12,13 @@ const Item = ({ todo, removeTodo, doneTodo, changeTodo }: IItemProps) => {
       setActiveEdit(!activeEdit);
     }
   };
+  const handleClickSubmit = () => {
+    if (newTitle) {
+      changeTodo(todo.id, todo.done, newTitle);
+      setActiveEdit(!activeEdit);
+    }
+    setActiveEdit(!activeEdit);
+  };
   const handleActiveEdit = () => {
     setActiveEdit(!activeEdit);
   };
@@ -37,11 +44,11 @@ const Item = ({ todo, removeTodo, doneTodo, changeTodo }: IItemProps) => {
       </div>
       <div>
         <button
-          onClick={handleActiveEdit}
+          onClick={activeEdit ? handleClickSubmit : handleActiveEdit}
           disabled={todo.done}
           className="btn btn-primary mr-2"
         >
-          Изменить
+          {activeEdit ? "Подтвердить" : "Изменить"}
         </button>
         <button onClick={handleCompleteTodo} className="btn btn-success mr-2">
           {todo.done ? "Возобновить" : "Завершить"}
