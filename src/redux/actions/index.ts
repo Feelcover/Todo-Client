@@ -20,6 +20,17 @@ export const deleteTodo = (payload: string) => {
     }
 }
 
+export const editTodo = (id: string, done: boolean, title: string) => {
+    return {
+        type:TodoActionTypes.EDIT_TODO,
+        payload: {
+            id,
+            done,
+            title
+        }
+    }
+}
+
 export const completeTodo = (id: string, done: boolean) => {
     return {
         type:TodoActionTypes.COMPLETE_TODO,
