@@ -15,4 +15,8 @@ export class TodoApi {
   static async deleteTodo(id: string): Promise<void> {
     await axios.delete(`http://localhost:3000/todos/${id}`);
   }
+
+  static async completeTodo(todo: ITodo): Promise<void> {
+    await axios.patch(`http://localhost:3000/todos/${todo.id}`, todo);
+  }
 }
