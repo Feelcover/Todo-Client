@@ -23,7 +23,7 @@ export const todoReducer = (
 
     case TodoActionTypes.COMPLETE_TODO_SUCCESS: {
       const todosArr = [...state.todos]
-      const completedIndex = state.todos.findIndex(
+      const completedIndex = todosArr.findIndex(
         (todo) => todo.id === action.payload);
 
         if (completedIndex === -1) {

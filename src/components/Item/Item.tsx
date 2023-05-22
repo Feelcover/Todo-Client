@@ -1,18 +1,25 @@
 import { IItemProps } from "../../types/types";
 import styles from "./Item.module.css";
 
-const Item = ({ todo, removeTodo }: IItemProps) => {
+const Item = ({ todo, removeTodo, doneTodo }: IItemProps) => {
   const handleDeleteTodo = () => {
     removeTodo(todo.id);
   };
+  const handleCompleteTodo = () => {
+    doneTodo(todo.id, !todo.done);
+  };
   return (
-    <li className={styles.item}>
+    <li
+      className={`${styles.item} ${todo.done && "list-group-item-success"}`}
+    >
       <div>
-        <span className={styles.task}>{todo.title}</span>
+        <span className={`${styles.task} ${todo.done && styles.itemDone}`}>{todo.title}</span>
       </div>
       <div>
         <button className="btn btn-primary mr-2">Изменить</button>
-        <button className="btn btn-success mr-2">Завершить</button>
+        <button onClick={handleCompleteTodo} className="btn btn-success mr-2">
+          Завершить
+        </button>
         <button onClick={handleDeleteTodo} className="btn btn-danger">
           Удалить
         </button>
