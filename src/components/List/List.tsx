@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { ITodoReducer } from "../../types/types";
-import { completeTodo, deleteTodo } from "../../redux/actions";
+import { completeTodo, deleteTodo, editTodo } from "../../redux/actions";
 import Item from "../Item/Item";
 import "./styles.css";
 
@@ -17,6 +17,10 @@ const List = () => {
     dispatch(completeTodo(id, done));
   };
 
+  const changeTodo = (id: string, done: boolean, title: string) => {
+    dispatch(editTodo(id, done, title));
+  };
+
   return (
     <TransitionGroup component="ul" className="list-group">
       {state.todos.map((todo) => (
@@ -25,6 +29,7 @@ const List = () => {
             todo={todo}
             removeTodo={removeTodo}
             doneTodo={doneTodo}
+            changeTodo={changeTodo}
           />
         </CSSTransition>
       ))}

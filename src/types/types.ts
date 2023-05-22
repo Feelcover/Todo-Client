@@ -35,6 +35,7 @@ export interface IItemProps {
   todo: ITodo;
   removeTodo: (arg0: string) => void;
   doneTodo: (arg0: string, arg1:boolean) => void;
+  changeTodo: (arg0: string, arg1:boolean, arg2:string) => void;
 }
 
 export interface IGetTodosAction {
