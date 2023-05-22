@@ -5,7 +5,8 @@ export enum TodoActionTypes {
   CREATE_TODO_SUCCESS = "CREATE_TODO_SUCCESS",
   COMPLETE_TODO = "COMPLETE_TODO",
   COMPLETE_TODO_SUCCESS = "COMPLETE_TODO_SUCCESS",
-  CHANGE_TODO = "CHANGE_TODO",
+  EDIT_TODO = "EDIT_TODO",
+  EDIT_TODO_SUCCESS = "EDIT_TODO_SUCCESS",
   DELETE_TODO = "DELETE_TODO",
   DELETE_TODO_SUCCESS = "DELETE_TODO_SUCCESS",
 }
@@ -20,8 +21,20 @@ export interface ITodoState {
   todos: ITodo[];
 }
 
+export interface IEditTodo {
+  title: string;
+  id: string;
+  done: boolean;
+}
+
 export interface ITodoReducer {
   todoReducer: ITodoState;
+}
+
+export interface IItemProps {
+  todo: ITodo;
+  removeTodo: (arg0: string) => void;
+  doneTodo: (arg0: string, arg1:boolean) => void;
 }
 
 export interface IGetTodosAction {
@@ -38,6 +51,13 @@ export interface ICompleteTodoAction<T> {
   payload: T;
 }
 
+export interface IEditTodoAction {
+  type: TodoActionTypes.EDIT_TODO_SUCCESS | TodoActionTypes.EDIT_TODO;
+  payload: IEditTodo;
+  id: string;
+}
+
+
 export interface IDeleteTodoAction {
   type: TodoActionTypes.DELETE_TODO_SUCCESS | TodoActionTypes.DELETE_TODO;
   payload: string;
@@ -47,9 +67,5 @@ export type ITodoAction =
   | ICreateTodoAction
   | IDeleteTodoAction
   | IGetTodosAction
-  | ICompleteTodoAction<ITodo | string>;
-export interface IItemProps {
-  todo: ITodo;
-  removeTodo: (arg0: string) => void;
-  doneTodo: (arg0: string, arg1:boolean) => void;
-}
+  | ICompleteTodoAction<ITodo | string>
+  | IEditTodoAction
