@@ -9,6 +9,9 @@ export const todoReducer = (
   action: ITodoAction
 ) => {
   switch (action.type) {
+    case TodoActionTypes.GET_TODOS_SUCCESS:
+      return { ...state, todos: action.payload };
+
     case TodoActionTypes.CREATE_TODO_SUCCESS:
       return { todos: [...state.todos, action.payload] };
 
@@ -18,19 +21,30 @@ export const todoReducer = (
         todos: state.todos.filter((todo) => todo.id !== action.payload),
       };
 
-    case TodoActionTypes.GET_TODOS_SUCCESS:
-      return { ...state, todos: action.payload };
+    case TodoActionTypes.EDIT_TODO_SUCCESS: {
+      const todosArr = [...state.todos];
+      const completedIndex = todosArr.findIndex(
+        (todo) => todo.id === action.id
+      );
+
+      if (completedIndex === -1) {
+        return state;
+      }
+      todosArr[completedIndex] = action.payload;
+      return { ...state, todos: todosArr };
+    }
 
     case TodoActionTypes.COMPLETE_TODO_SUCCESS: {
-      const todosArr = [...state.todos]
+      const todosArr = [...state.todos];
       const completedIndex = todosArr.findIndex(
-        (todo) => todo.id === action.payload);
+        (todo) => todo.id === action.payload
+      );
 
-        if (completedIndex === -1) {
-          return state
-        }
-        todosArr[completedIndex].done = !todosArr[completedIndex].done
-        return {...state, todos: todosArr}
+      if (completedIndex === -1) {
+        return state;
+      }
+      todosArr[completedIndex].done = !todosArr[completedIndex].done;
+      return { ...state, todos: todosArr };
     }
 
     default:
