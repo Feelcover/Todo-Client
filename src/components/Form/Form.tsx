@@ -24,10 +24,9 @@ const Form = () => {
   };
 
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       {alertState.alertText.length > 0 && <Alert props={alertState} />}
-
-    <form className={styles.form} onSubmit={handleSubmit}>
+      <div className={styles.form}>
       <div className={styles.container}>
         <label className="form-label" htmlFor="">
           Введите название задачи
@@ -40,8 +39,8 @@ const Form = () => {
         />
       </div>
       <button className={`${styles.button} btn btn-success`}>Создать</button>
+      </div>
     </form>
-    </>
   );
 };
 

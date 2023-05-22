@@ -1,8 +1,9 @@
-.alertWrapper{
+.alert-wrapper {
     position: relative;
 }
-.alertBtn{
+
+.alert-btn {
     position: absolute;
-    top:5px;
+    top: 5px;
     right: 5px;
 }

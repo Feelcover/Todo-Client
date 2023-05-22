@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { hideAlert } from "../../redux/actions";
 import { IAlertProps } from "../../types/types";
-import styles from "./Alert.module.css";
+import "./styles.css";
 
 const Alert = ({ props }: IAlertProps) => {
   const dispatch = useDispatch();
@@ -9,12 +9,9 @@ const Alert = ({ props }: IAlertProps) => {
     dispatch(hideAlert());
   };
   return (
-    <div className={`${styles.alertWrapper} alert-${props.alertStatus}`}>
+    <div className={`alert alert-wrapper alert-${props.alertStatus}`}>
       {props.alertText}
-      <button
-        className={`${styles.alertBtn} btn-close`}
-        onClick={handlerAlertClose}
-      />
+      <button className="btn-close alert-btn" onClick={handlerAlertClose} />
     </div>
   );
 };
