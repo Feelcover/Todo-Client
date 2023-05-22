@@ -8,13 +8,21 @@ import {
 } from "../../types/types";
 import { call, Effect, put, takeEvery } from "redux-saga/effects";
 import { TodoApi } from "../../api";
+import { hideAlert, showAlert } from "../actions";
+
+const delay = (time: number) =>
+  new Promise((resolve) => setTimeout(resolve, time));
 
 function* sagaGetTodos(): Generator<Effect, void, ITodo[]> {
   try {
     const todos = yield call(TodoApi.getTodos);
 
     yield put({ type: TodoActionTypes.GET_TODOS_SUCCESS, payload: todos });
+    yield put(showAlert("Задачи получены", "success"));
+    yield call(delay, 2000);
+    yield put(hideAlert());
   } catch (err) {
+    yield put(showAlert("Не удалось получить задачи", "warning"));
     console.log(err);
   }
 }
@@ -28,7 +36,12 @@ function* sagaCreateTodo(action: ICreateTodoAction): Generator<Effect, void> {
     const todo = yield call(TodoApi.createTodo, todoObj);
 
     yield put({ type: TodoActionTypes.CREATE_TODO_SUCCESS, payload: todo });
+
+    yield put(showAlert("Задача создана", "success"));
+    yield call(delay, 3000);
+    yield put(hideAlert());
   } catch (err) {
+    yield put(showAlert("Не удалось создать задачу", "warning"));
     console.log(err);
   }
 }
@@ -41,7 +54,12 @@ function* sagaDeleteTodo(action: IDeleteTodoAction): Generator<Effect, void> {
       type: TodoActionTypes.DELETE_TODO_SUCCESS,
       payload: action.payload,
     });
+
+    yield put(showAlert("Задача удалена", "success"));
+    yield call(delay, 2000);
+    yield put(hideAlert());
   } catch (err) {
+    yield put(showAlert("Ошибка удаления задачи", "warning"));
     console.log(err);
   }
 }
@@ -60,7 +78,17 @@ function* sagaCompleteTodo(
       type: TodoActionTypes.COMPLETE_TODO_SUCCESS,
       payload: action.payload.id,
     });
+
+    yield put(
+      showAlert(
+        `Задача ${action.payload.done ? "завершена" : "возобновлена"}`,
+        "success"
+      )
+    );
+    yield call(delay, 2000);
+    yield put(hideAlert());
   } catch (err) {
+    yield put(showAlert("Ошибка завершения задачи", "warning"));
     console.log(err);
   }
 }
@@ -81,7 +109,12 @@ function* sagaEditTodo(
       payload: todo,
       id: action.payload.id,
     });
+
+    yield put(showAlert("Задача изменена", "success"));
+    yield call(delay, 2000);
+    yield put(hideAlert());
   } catch (err) {
+    yield put(showAlert("Ошибка редактирования задачи", "warning"));
     console.log(err);
   }
 }

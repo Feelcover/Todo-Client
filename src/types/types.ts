@@ -32,6 +32,10 @@ export interface IAlertProps {
   props: IAlertState;
 }
 
+export interface IAlertReducer {
+  alertReducer: IAlertState;
+}
+
 export interface ITodo {
   id: string;
   title: string;

@@ -5,12 +5,12 @@ const initialState = {
   alertStatus: "",
 };
 
-export const alertReducer = (state: IAlertState, action: IAlertAction) => {
+export const alertReducer = (state: IAlertState = initialState, action: IAlertAction) => {
   switch (action.type) {
     case TodoActionTypes.SHOW_ALERT:
       return { alertText: action.payload, alertStatus: action.status };
 
-    case TodoActionTypes.SHOW_ALERT:
+    case TodoActionTypes.HIDE_ALERT:
       return { alertText: "", alertStatus: "" };
 
     default:
